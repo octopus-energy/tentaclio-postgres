@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-22
+### Changed
+  - Bump the minimum supported Python from 3.10 (EOL) to 3.11.
+  - Add support for Python 3.15.
+  - Limit to `sqlalchemy<2.1` support as `sqlalchemy>=2.1` makes psycopg 3 the default PostgreSQL
+    driver which has a different API which this package do not support yet.
+  - Limit to `pandas<3` as pandas 3 API not yet supported.
+### Fixed
+  - Raise the `[build-system]` floor from `setuptools>=61.0` to `setuptools>=77`. The
+    `license = "MIT"` SPDX string (PEP 639) needs setuptools 77+, so building the sdist with an
+    older setuptools and build isolation off failed with an opaque `project.license must be valid
+    exactly by one definition` error.
+  - Dev dependencies not defined within `[dependency-groups]` block in `pyproject.toml`.
+  - Lint changes to pass latest version of mypy.
+
 ## [0.1.0] - 2026-07-30
 ### Changed
   - Bump the minimum supported Python from 3.9 (EOL) to 3.10. CircleCI executors bumped from
